@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:will_pop_demo/widgets.dart';
+
+import '../get_main/pop_scope_page_transitions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: PopScopePageTransitionsBuilder(),
+            TargetPlatform.iOS: PopScopePageTransitionsBuilder(),
+          },
+        ),
       ),
       routes: {
         '/': (context) => const HomePage(),
@@ -70,29 +79,29 @@ class _SecondPageState extends State<SecondPage> {
             return;
           }
 
-          // showDialog(
-          //   context: context,
-          //   builder: (context) {
-          //     return AlertDialog(
-          //       title: const Text('WillPopScope'),
-          //       content: const Text('WillPopScope'),
-          //       actions: [
-          //         TextButton(
-          //           child: const Text('OK'),
-          //           onPressed: () {
-          //             Navigator.of(context)
-          //               ..pop()
-          //               ..pop();
-          //           },
-          //         )
-          //       ],
-          //     );
-          //   },
-          // );
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('WillPopScope'),
+                content: const Text('WillPopScope'),
+                actions: [
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context)
+                        ..pop()
+                        ..pop();
+                    },
+                  )
+                ],
+              );
+            },
+          );
           //
         },
       ),
-      body: Column(
+      body: ListView(
         children: [
           ElevatedButton(
             onPressed: () {
@@ -111,6 +120,9 @@ class _SecondPageState extends State<SecondPage> {
             },
             child: const Text('pop'),
           ),
+          // const CupertinoTextField(
+          //   placeholder: 'input  something...',
+          // )
         ],
       ),
     );

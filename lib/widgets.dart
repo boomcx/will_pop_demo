@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 // Practical use
@@ -14,19 +12,21 @@ class PopScopeFuncAppBar<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final appBar = PopScope(
+    final appBar = AppBar(title: Text(title));
+
+    // if (onPopInvoked == null) {
+    //   return appBar;
+    // }
+
+    return PopScope(
       canPop: onPopInvoked == null,
       onPopInvokedWithResult: (didPop, T? result) async {
         print('  `onPopInvokedWithResult` didPop: $didPop, result: $result');
         if (didPop) return;
         await onPopInvoked?.call(didPop, result);
       },
-      child: AppBar(title: Text(title)),
+      child: appBar,
     );
-
-    if (Platform.isIOS) {}
-
-    return appBar;
   }
 
   @override
@@ -48,19 +48,16 @@ class PopScopeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appbar = PopScope(
-      canPop: canPop,
-      onPopInvokedWithResult: onPopInvokedWithResult,
-      child: AppBar(title: Text(title)),
-    );
-
+    final appbar = AppBar(title: Text(title));
     // if (canPop) {
     //   return AppBar(title: Text(title));
     // }
 
-    if (Platform.isIOS) {}
-
-    return appbar;
+    return PopScope(
+      canPop: canPop,
+      onPopInvokedWithResult: onPopInvokedWithResult,
+      child: appbar,
+    );
   }
 
   @override

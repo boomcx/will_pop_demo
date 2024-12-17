@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:will_pop_demo/get_main/pop_scope_page_transitions.dart';
 import 'package:will_pop_demo/get_main/routes/app_pages.dart';
 
 void main() async {
-  RootBackButtonDispatcher;
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
       backButtonDispatcher: MRootBackButtonDispatcher(),
+      theme: ThemeData(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            // TargetPlatform.android: PopScopePageTransitionsBuilder(),
+            TargetPlatform.iOS: PopScopePageTransitionsBuilder(),
+          },
+        ),
+      ),
+      // defaultTransition: Transition.cupertino,
+      // customTransition: PopScopeCustomTransitionsBuilder(),
       // unknownRoute: AppPages.unknownRoute,
       // scrollBehavior: CustomScrollBehavior(),
     );

@@ -10,10 +10,11 @@ class SecondView extends GetView<SecondController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green,
       appBar: PopScopeFuncAppBar(
         title: 'SecondView',
         onPopInvoked: (didPop, result) async {
-            if (controller.canPop.value) {
+          if (controller.canPop.value) {
             Get.back();
             return;
           }
@@ -43,7 +44,8 @@ class SecondView extends GetView<SecondController> {
             ),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed(kRouteThird);
+                print(Get.theme);
+                // Get.toNamed(kRouteThird);
               },
               child: const Text('to third'),
             ),
