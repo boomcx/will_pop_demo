@@ -38,6 +38,8 @@ dependencies:
   # get: ^5.0.0-release-candidate-9.2.1
   get:
     path: /Users/Apple/Downloads/getx-master
+  pop_scope_page_transitions:
+    path: /Users/Apple/Desktop/pub/pop_scope_page_transitions
   go_router: ^14.6.2
 
 dev_dependencies:

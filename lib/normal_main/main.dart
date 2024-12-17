@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pop_scope_page_transitions/pop_scope_page_transitions.dart';
 import 'package:will_pop_demo/widgets.dart';
 
-import '../get_main/pop_scope_page_transitions.dart';
 
 void main() {
   runApp(const MyApp());

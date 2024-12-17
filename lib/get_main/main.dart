@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:will_pop_demo/get_main/pop_scope_page_transitions.dart';
+import 'package:pop_scope_page_transitions/pop_scope_page_transitions.dart';
 import 'package:will_pop_demo/get_main/routes/app_pages.dart';
 
 void main() async {

@@ -167,6 +167,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  pop_scope_page_transitions:
+    dependency: "direct main"
+    description:
+      path: "/Users/Apple/Desktop/pub/pop_scope_page_transitions"
+      relative: false
+    source: path
+    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

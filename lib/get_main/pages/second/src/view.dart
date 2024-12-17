@@ -44,8 +44,7 @@ class SecondView extends GetView<SecondController> {
             ),
             ElevatedButton(
               onPressed: () {
-                print(Get.theme);
-                // Get.toNamed(kRouteThird);
+                Get.toNamed(kRouteThird);
               },
               child: const Text('to third'),
             ),
