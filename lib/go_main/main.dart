@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pop_scope_page_transitions/pop_scope_page_transitions.dart';
 import 'package:will_pop_demo/widgets.dart';
 
 /// This sample app shows an app with two screens.
@@ -45,6 +46,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _router,
+      theme: ThemeData(
+        pageTransitionsTheme: const PageTransitionsTheme(builders: {
+          // TargetPlatform.android: PopScopePageTransitionsBuilder(),
+          TargetPlatform.iOS: PopScopePageTransitionsBuilder(),
+        }),
+      ),
     );
   }
 }
@@ -78,11 +85,31 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: PopScopeAppBar(
         title: 'Details Screen',
-        canPop: false,
+        // canPop: true,
         onPopInvokedWithResult: (didPop, result) {
           if (didPop) {
             return;
           }
+
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('WillPopScope'),
+                content: const Text('WillPopScope'),
+                actions: [
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context)
+                        ..pop()
+                        ..pop();
+                    },
+                  )
+                ],
+              );
+            },
+          );
         },
       ),
       body: Center(

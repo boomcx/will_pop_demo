@@ -37,6 +37,7 @@ class MRootBackButtonDispatcher extends BackButtonDispatcher
   /// Create a root back button dispatcher.
   MRootBackButtonDispatcher();
 
+
   @override
   void addCallback(ValueGetter<Future<bool>> callback) {
     if (!hasCallbacks) {

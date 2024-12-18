@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pop_scope_page_transitions/pop_scope_page_transitions.dart';
 import 'package:will_pop_demo/widgets.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -72,6 +71,7 @@ class _SecondPageState extends State<SecondPage> {
     return Scaffold(
       appBar: PopScopeAppBar(
         title: 'SecondPage',
+        canPop: true,
         onPopInvokedWithResult: (didPop, result) {
           print(
               ' SecondPage `onPopInvokedWithResult` didPop: $didPop, result: $result');
